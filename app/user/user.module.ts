@@ -6,18 +6,22 @@ import { FormsModule } from "@angular/forms";
 import { userRoutes } from "./user.routes";
 import { ProfileComponent } from "./profile.component";
 import { LoginComponent } from "./login.component";
+// import { AuthService } from "./auth.service";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        // AuthService,
         RouterModule.forChild(userRoutes)
     ],
     declarations: [
         ProfileComponent, 
         LoginComponent
     ],
-    providers: []
+    providers: [
+        
+    ]
 })
 export class UserModule {
 
