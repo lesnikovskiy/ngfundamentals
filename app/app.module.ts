@@ -16,15 +16,22 @@ import {
     DurationPipe
 } from "./events/index";
 
-import { CollapsibleWellCompnent } from "./common/collapsible-well.component";
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav.component";
 import { Error404Component } from "./errors/404.component";
-import { TOASTR_TOKEN, Toastr } from "./common/toastr.service";
+import {
+    TOASTR_TOKEN,
+    JQ_TOKEN,
+    Toastr, 
+    CollapsibleWellCompnent, 
+    SimpleModalComponent,
+    ModalTriggerDirective
+} from "./common/index";
 import { AuthService } from "./user/auth.service";
 import { appRoutes } from "./routes";
 
 declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
     imports: [
@@ -44,20 +51,22 @@ declare let toastr: Toastr;
         CreateSessionComponent,
         SessionListComponent,
         CollapsibleWellCompnent,
-        DurationPipe
+        DurationPipe,
+        SimpleModalComponent,
+        ModalTriggerDirective        
     ],
     providers: [
-        EventService, 
-        { provide: TOASTR_TOKEN, useValue: toastr }, 
-        // hand long DI activation same as just EventRouteActivator
-        { provide: EventRouteActivator, useClass: EventRouteActivator },
+        EventService,
+        { provide: TOASTR_TOKEN, useValue: toastr },
+        { provide: JQ_TOKEN, useValue: jQuery },
+        EventRouteActivator,
         EventListResolver,
         AuthService,
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ],
     bootstrap: [EventsAppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 
 function checkDirtyState(component: CreateEventComponent) {
     if (component.isDirty)
