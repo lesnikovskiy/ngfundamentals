@@ -13,9 +13,9 @@ import {
     EventListResolver,
     CreateSessionComponent,
     SessionListComponent,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent
 } from "./events/index";
-
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav.component";
 import { Error404Component } from "./errors/404.component";
@@ -28,6 +28,7 @@ import {
     ModalTriggerDirective
 } from "./common/index";
 import { AuthService } from "./user/auth.service";
+import { VoterService } from "./events/event-details/voter.service";
 import { appRoutes } from "./routes";
 
 declare let toastr: Toastr;
@@ -53,7 +54,8 @@ declare let jQuery: Object;
         CollapsibleWellCompnent,
         DurationPipe,
         SimpleModalComponent,
-        ModalTriggerDirective        
+        ModalTriggerDirective,
+        UpvoteComponent        
     ],
     providers: [
         EventService,
@@ -62,6 +64,7 @@ declare let jQuery: Object;
         EventRouteActivator,
         EventListResolver,
         AuthService,
+        VoterService,
         { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
     ],
     bootstrap: [EventsAppComponent]
