@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { TOASTR_TOKEN, Toastr } from "../common/toastr.service";
- 
+
 @Component({
     templateUrl: "app/user/profile.component.html",
     styles: [`
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.firstName = new FormControl(this.authService.currentUser.firstName, 
+        this.firstName = new FormControl(this.authService.currentUser.firstName,
             [Validators.required, Validators.pattern("[a-zA-Z].*")]);
         this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required);
 
@@ -41,8 +41,9 @@ export class ProfileComponent implements OnInit {
 
     saveProfile(formValues) {
         if (this.profileForm.valid) {
-            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-            this.toastr.success("Profile Saved")
+            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName).subscribe(() => {
+                this.toastr.success("Profile Saved");
+            });
         }
     }
 
