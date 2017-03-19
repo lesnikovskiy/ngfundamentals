@@ -18,14 +18,15 @@ import {
     UpvoteComponent,
     LocationValidator
 } from "./events/index";
+// tslint:disable-next-line:ordered-imports
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav.component";
 import { Error404Component } from "./errors/404.component";
 import {
     TOASTR_TOKEN,
     JQ_TOKEN,
-    Toastr, 
-    CollapsibleWellCompnent, 
+    Toastr,
+    CollapsibleWellCompnent,
     SimpleModalComponent,
     ModalTriggerDirective
 } from "./common/index";
@@ -59,17 +60,17 @@ declare let jQuery: Object;
         SimpleModalComponent,
         ModalTriggerDirective,
         UpvoteComponent,
-        LocationValidator        
+        LocationValidator
     ],
     providers: [
         EventService,
         { provide: TOASTR_TOKEN, useValue: toastr },
-        { provide: JQ_TOKEN, useValue: jQuery },        
+        { provide: JQ_TOKEN, useValue: jQuery },
         EventListResolver,
         EventResolver,
         AuthService,
         VoterService,
-        { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+        { provide: "canDeactivateCreateEvent", useValue: checkDirtyState }
     ],
     bootstrap: [EventsAppComponent]
 })
