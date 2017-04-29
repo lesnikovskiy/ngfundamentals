@@ -18,7 +18,6 @@ import {
     UpvoteComponent,
     LocationValidator
 } from "./events/index";
-// tslint:disable-next-line:ordered-imports
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/nav.component";
 import { Error404Component } from "./errors/404.component";
